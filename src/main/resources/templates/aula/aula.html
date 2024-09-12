@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Unidad Educativa Danilo Brito Aguila</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+<style>
+    body {
+        background-image: url('https://cdn-3.expansion.mx/dims4/default/b81ebca/2147483647/resize/1280x/quality/90/?url=https%3A%2F%2Fcdn-3.expansion.mx%2F7e%2Ff3%2F97dfbd884072a1b2f948fb981033%2Faulas-futuro-presente.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+    .container {
+        background-color: rgba(255, 255, 255, 0.8);
+        padding: 20px;
+        border-radius: 10px;
+        margin-top: 20px;
+    }
+</style>
+
+<nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+    <div class="container-fluid" >
+        <a class="navbar-brand" href="#">Unidad Educativa Danilo Brito Aguila</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarColor02">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" style="background-color: red" href="/">Home
+                        <span class="visually-hidden">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/aulas">Aulas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/aula/formulario">Ingreso de aulas</a>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-3">
+    <h2>LISTA DE AULAS</h2>
+    <table class="table">
+        <thead class="table-success">
+        <tr>
+            <th>ID</th>
+            <th>NUMERO DE AULA</th>
+            <th>CAPACIDAD DEL AULA</th>
+            <th>CURSO AL QUE PERTENECE</th>
+            <th>ACCIONES</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="aula: ${aulas}">
+            <td th:text="${aula.id}"></td>
+            <td th:text="${aula.aulaNumero}"></td>
+            <td th:text="${aula.aulaCapacidad}"></td>
+            <td th:text="${aula.curso?.cursoNombre}"></td>
+            <td>
+                <a th:href="@{/aula/editar/}+${aula.id}" class="btn btn-success">EDITAR</a>
+                <a th:href="@{/aula/eliminar/}+${aula.id}" class="btn btn-danger">ELIMINAR</a>
+            </td>
+
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
